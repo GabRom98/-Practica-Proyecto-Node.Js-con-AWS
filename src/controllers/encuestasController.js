@@ -1,6 +1,6 @@
 import { crearEncuestaService, obtenerEncuestasPorPkService, obtenerEncuestaPorSkService, actualizarEncuestaService } from '../service/encuestasService.js';
-import { v4 as uuidv4 } from "uuid"
 import generarNuevaEncuesta from "../utils/generarNuevaEncuesta.js"
+import { v4 as uuidv4 } from "uuid"
 
 //Hoy en dia las validaciones no tienen porque ser tan fuertes. Ya que lo manejaremos nosotros a la app.
 
@@ -9,7 +9,7 @@ const crearEncuestaController = async (req, res) => {
  const idEncuesta = uuidv4();
 
   if ( !email || !titulo || !Array.isArray(preguntas) || preguntas.length === 0) {
-    return res.status(400).json({ message: 'Datos incompletos' });
+    return res.status(400).json({ message: 'Datos invalidos' });
   }
 
   const nuevaEncuesta = generarNuevaEncuesta(email, titulo, preguntas,idEncuesta);
